@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Reserve Bank of India — Recruitment Notifications</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+    /* UI STYLES (Claude's Professional Design) */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+        --navy: #0a2342; --navy-mid: #143566; --blue: #1a56a8; --blue-light: #2a6dd9;
+        --sky: #ddeeff; --gold: #c8972a; --gold-light: #f0c84a; --white: #ffffff;
+        --off-white: #f4f7fb; --border: #c5d8f0; --text: #1a2436; --muted: #5a6a82;
+        --new-badge: #c8270a; --font-serif: 'EB Garamond', Georgia, serif; --font-sans: 'Source Sans 3', sans-serif;
+    }
+    body { font-family: var(--font-sans); background: var(--off-white); color: var(--text); font-size: 15px; }
+
+    /* HEADER & NAV */
+    header { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #1a4a8a 100%); padding: 1.5rem 2rem; color: white; display: flex; align-items: center; gap: 20px; }
+    .emblem { width: 60px; height: 60px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    h1 { font-family: var(--font-serif); font-size: 28px; }
+    nav { background: var(--navy-mid); border-bottom: 3px solid var(--gold); padding: 10px 2rem; color: white; display: flex; gap: 20px; font-size: 13px; }
+
+    /* TABLE STYLES */
+    .page-inner { max-width: 1100px; margin: 2rem auto; padding: 0 2rem; }
+    .card { background: white; border: 1px solid var(--border); border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .card-head { background: var(--navy); color: white; padding: 12px 20px; font-family: var(--font-serif); }
+    table { width: 100%; border-collapse: collapse; }
+    th { background: var(--sky); padding: 12px; text-align: left; font-size: 12px; color: var(--navy); }
+    td { padding: 15px; border-bottom: 1px solid #eee; }
+    .btn-pdf { background: var(--blue); color: white; padding: 8px 15px; border-radius: 3px; text-decoration: none; font-weight: 600; cursor: pointer; display: inline-block; }
+    .btn-pdf:hover { background: var(--blue-light); }
+
+    /* PRANK OVERLAY STYLES */
+    #prankOverlay {
+        display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background: black; color: #ff0000; z-index: 99999; text-align: center;
+        padding-top: 20%; font-family: 'Courier New', Courier, monospace;
+    }
+    .glitch { animation: flash 0.1s infinite; }
+    @keyframes flash { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+</style>
+</head>
+<body>
+
+<header>
+    <div class="emblem">🏛️</div>
+    <div>
+        <p style="font-size: 12px; opacity: 0.7;">भारतीय रिज़र्व बैंक</p>
+        <h1>Reserve Bank of India</h1>
+    </div>
+</header>
+
+<nav>
+    <span>Home</span> <span>Notifications</span> <span>Admit Cards</span> <span>Results</span>
+</nav>
+
+<div class="page-inner">
+    <div style="background: #fff8e1; padding: 15px; border-left: 5px solid var(--gold); margin-bottom: 20px;">
+        <strong>NOTICE:</strong> Admission Letters for RBI Assistant Preliminary Examination (April 2026) are now available.
+    </div>
+
+    <div class="card">
+        <div class="card-head">Latest Notifications</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Date</th>
+                    <th>Download</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>RBI Assistant 2026 - Admit Card (Phase I)</strong> <span style="background:red; color:white; font-size:10px; padding:2px 5px; border-radius:2px;">NEW</span></td>
+                    <td>18 Mar 2026</td>
+                    <td><a href="#" class="btn-pdf" onclick="startPrank(event)">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td>Grade B Officer Recruitment - Final Results</td>
+                    <td>15 Mar 2026</td>
+                    <td><a href="#" class="btn-pdf" onclick="startPrank(event)">View PDF</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="prankOverlay">
+    <h1 class="glitch">⚠️ CRITICAL SYSTEM ERROR ⚠️</h1>
+    <p style="margin-top: 20px; color: white;">UNAUTHORIZED ACCESS DETECTED FROM KANPUR REGION</p>
+    <p style="font-size: 30px; margin-top: 40px;">DELETING SYSTEM FILES: <span id="percent">0</span>%</p>
+    <p style="color: #555; margin-top: 50px;">Do not close this tab or turn off your device.</p>
+</div>
+
+<script>
+    function startPrank(e) {
+        e.preventDefault();
+
+        // 1. Vibration (Mobile only)
+        if (navigator.vibrate) {
+            navigator.vibrate([500, 200, 500, 200, 1000, 500, 2000]);
+        }
+
+        // 2. Sound (Beep/Siren)
+        let audio = new Audio('https://www.soundjay.com/buttons/beep-01a.mp3');
+        audio.play().catch(() => console.log("User interaction needed for audio"));
+
+        // 3. Show Overlay
+        document.getElementById('prankOverlay').style.display = 'block';
+
+        // 4. Counter Logic
+        let count = 0;
+        let counter = setInterval(() => {
+            count++;
+            document.getElementById('percent').innerText = count;
+            if (count >= 100) clearInterval(counter);
+        }, 80);
+
+        // 5. The Trap (Looping Alerts)
+        setTimeout(() => {
+            const msgs = [
+                "Bhai, tera phone toh gaya! 😂",
+                "Formatting Internal Storage... 67%",
+                "IP Address: 103.21.XX.XX has been reported to Cyber Cell.",
+                "Joke tha bhai! Darr gaya na? Happy April Fools (Early)!",
+                "Ab back button daba ke dikha! 😜"
+            ];
+            msgs.forEach(m => alert(m));
+            
+            // Redirect to Rickroll or Meme after alerts
+            window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+        }, 1000);
+    }
+</script>
+
+<footer style="text-align: center; padding: 30px; color: #888; font-size: 12px;">
+    &copy; 2026 Reserve Bank of India. All rights reserved.
+</footer>
+
+</body>
+</html>
