@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet" />
 <style>
-  /* --- CLAUDE'S PREMIUM UI STYLES --- */
+  /* CLAUDE'S PREMIUM UI */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
     --navy: #0a2342; --navy-mid: #143566; --blue: #1a56a8; --blue-light: #2a6dd9;
@@ -15,148 +15,128 @@
     --off-white: #f4f7fb; --border: #c5d8f0; --text: #1a2436; --muted: #5a6a82;
     --new-badge: #c8270a; --font-serif: 'EB Garamond', Georgia, serif; --font-sans: 'Source Sans 3', sans-serif;
   }
-  body { font-family: var(--font-sans); background: var(--off-white); color: var(--text); font-size: 15px; line-height: 1.6; }
+  body { font-family: var(--font-sans); background: var(--off-white); color: var(--text); font-size: 15px; }
 
-  header { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #1a4a8a 100%); padding: 0; position: relative; }
-  .header-inner { max-width: 1100px; margin: 0 auto; padding: 1.5rem 2rem; display: flex; align-items: center; gap: 2rem; }
-  .emblem { width: 70px; height: 70px; background: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 3px var(--gold); }
-  .header-text h1 { font-family: var(--font-serif); font-size: 28px; color: var(--white); font-weight: 600; }
-  
-  nav { background: var(--navy-mid); border-bottom: 2px solid var(--gold); }
-  .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 2rem; display: flex; }
-  nav a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 13px; padding: 12px 18px; }
-  nav a.active { background: rgba(255,255,255,0.1); border-bottom: 3px solid var(--gold-light); color: white; }
+  header { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #1a4a8a 100%); padding: 1.5rem 2rem; color: white; display: flex; align-items: center; gap: 2rem; }
+  .emblem { width: 60px; height: 60px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; }
+  h1 { font-family: var(--font-serif); font-size: 26px; }
+  nav { background: var(--navy-mid); border-bottom: 2px solid var(--gold); padding: 10px 2rem; color: white; display: flex; gap: 20px; font-size: 13px; }
 
   .page-inner { max-width: 1100px; margin: 2rem auto; padding: 0 2rem; display: grid; grid-template-columns: 1fr 300px; gap: 1.75rem; }
-  .card { background: var(--white); border: 1px solid var(--border); border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); overflow: hidden; }
-  .card-head { background: var(--navy); padding: 10px 18px; color: white; font-family: var(--font-serif); font-size: 16px; }
+  .card { background: white; border: 1px solid var(--border); border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+  .card-head { background: var(--navy); padding: 10px 18px; color: white; font-family: var(--font-serif); }
   
   .notif-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
-  .notif-table th { background: var(--sky); text-align: left; padding: 10px; font-size: 11px; color: var(--navy-mid); text-transform: uppercase; }
+  .notif-table th { background: var(--sky); text-align: left; padding: 10px; font-size: 11px; color: var(--navy-mid); }
   .notif-table td { padding: 12px; border-bottom: 1px solid #eef2f7; }
   
-  .btn-pdf { display: inline-flex; align-items: center; gap: 5px; background: var(--blue); color: white; padding: 5px 12px; border-radius: 3px; text-decoration: none; font-weight: 600; font-size: 12px; cursor: pointer; border:none; }
-  .badge-new { background: var(--new-badge); color: white; font-size: 9px; padding: 1px 4px; border-radius: 2px; margin-left: 5px; animation: blink 1s infinite; }
-  @keyframes blink { 50% { opacity: 0.2; } }
+  .btn-pdf { background: var(--blue); color: white; padding: 6px 14px; border-radius: 3px; text-decoration: none; font-weight: 600; font-size: 12px; cursor: pointer; border: none; }
 
-  /* --- YASH'S HACKER OVERLAY --- */
+  /* INTENSE HACKER OVERLAY */
   #hackerOverlay {
     display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: black; color: #00ff00; z-index: 10000; font-family: 'Courier New', monospace;
-    padding: 10% 20px; text-align: center;
+    background: #000; color: #00ff00; z-index: 10000; font-family: 'Courier New', monospace;
+    padding: 20px; text-align: left; overflow: hidden;
   }
-  .warning-title { color: #ff0000; font-size: 32px; font-weight: bold; text-shadow: 0 0 10px red; animation: shake 0.1s infinite; }
-  @keyframes shake { 0%, 100% { transform: translate(0); } 25% { transform: translate(-2px, 2px); } 75% { transform: translate(2px, -2px); } }
-  .log-box { text-align: left; display: inline-block; margin-top: 30px; font-size: 14px; line-height: 1.6; }
-
-  @media (max-width: 760px) { .page-inner { grid-template-columns: 1fr; } .sidebar { display: none; } }
+  .warning-banner { background: #ff0000; color: #fff; text-align: center; padding: 10px; font-weight: bold; animation: blink 0.2s infinite; }
+  @keyframes blink { 0% { opacity: 0; } 50% { opacity: 1; } }
+  .log-stream { font-size: 12px; margin-top: 15px; color: #0f0; }
+  .status-line { color: yellow; font-weight: bold; margin: 15px 0; }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="header-inner">
-    <div class="emblem">🏛️</div>
-    <div class="header-text">
-      <p style="font-size: 11px; color: rgba(255,255,255,0.6);">भारतीय रिज़र्व बैंक</p>
-      <h1>Reserve Bank of India</h1>
-    </div>
-  </div>
+  <div class="emblem">🏛️</div>
+  <div><p style="font-size: 10px; opacity: 0.7;">भारतीय रिज़र्व बैंक</p><h1>Reserve Bank of India</h1></div>
 </header>
 
-<nav>
-  <div class="nav-inner">
-    <a href="#" class="active">Home</a> <a href="#">Notifications</a> <a href="#">Results</a> <a href="#">Admit Cards</a>
-  </div>
-</nav>
+<nav><span>Home</span> <span>Notifications</span> <span>Admit Cards</span></nav>
 
 <main class="page-inner">
   <div class="main-content">
     <div style="background: #fff8e1; border-left: 4px solid var(--gold); padding: 12px; margin-bottom: 20px; font-size: 13px;">
-      <strong>IMPORTANT:</strong> Admission Letters for Assistant (Prelims) Exam 2026 are now live. Candidates can download their admit cards using the links below.
+      <strong>URGENT:</strong> Admit Card for Assistant Prelims (April 12, 2026) is available for download below.
     </div>
 
     <div class="card">
-      <div class="card-head">Latest Recruitment Notifications</div>
+      <div class="card-head">Latest Recruitments</div>
       <table class="notif-table">
-        <thead>
-          <tr><th>Notification Title</th><th>Date</th><th style="text-align:center;">Action</th></tr>
-        </thead>
+        <thead><tr><th>Title</th><th>Action</th></tr></thead>
         <tbody>
           <tr>
-            <td><strong>Download Admit Card for RBI Assistant 2026 (Phase I)</strong> <span class="badge-new">NEW</span></td>
-            <td>18 Mar 2026</td>
-            <td style="text-align:center;"><button class="btn-pdf" onclick="triggerHackerPrank(event)">View PDF</button></td>
-          </tr>
-          <tr>
-            <td>Mark Sheet: Grade B Officers Recruitment 2025</td>
-            <td>15 Mar 2026</td>
-            <td style="text-align:center;"><button class="btn-pdf" onclick="triggerHackerPrank(event)">View PDF</button></td>
+            <td><strong>RBI Assistant 2026 - Hall Ticket (PDF)</strong></td>
+            <td><button class="btn-pdf" onclick="launchChaos(event)">View PDF</button></td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
-
-  <aside class="sidebar">
-    <div class="card">
-      <div class="card-head">Quick Links</div>
-      <div style="padding: 10px;">
-        <p style="font-size: 13px; color: var(--blue); cursor:pointer; margin-bottom: 8px;">• Exam Calendar 2026</p>
-        <p style="font-size: 13px; color: var(--blue); cursor:pointer;">• Previous Year Question Papers</p>
-      </div>
-    </div>
-  </aside>
 </main>
 
 <div id="hackerOverlay">
-  <div class="warning-title">🔴 CRITICAL SYSTEM INTRUSION</div>
-  <div class="log-box">
-    <p>> Establishing Remote Connection... OK</p>
-    <p>> Bypassing Firewall... 100%</p>
-    <p>> Target ID: Kanpur_User_7782</p>
-    <p>> Location: Govind Nagar, Kanpur Detected.</p>
-    <p>> Encrypting Files: <span id="percent">0</span>%</p>
-    <p style="color: yellow; margin-top: 20px;">SYSTEM WILL BE WIPED UPON COMPLETION.</p>
-  </div>
+  <div class="warning-banner">SYSTEM CRITICALLY COMPROMISED</div>
+  <div class="log-stream" id="logs"></div>
+  <div class="status-line">UPLOADING ENCRYPTED BLOCKS: <span id="percent">0</span>%</div>
+  <div style="color:red; font-size:10px; margin-top:10px;">ROOT_ACCESS: GRANTED | KERNEL_PANIC: TRUE | IP_TRACED: KANPUR_LOCAL</div>
 </div>
 
 <script>
-  function triggerHackerPrank(e) {
+  function launchChaos(e) {
     e.preventDefault();
 
-    // 1. Vibration
+    // 1. "Uncontrolled" Erratic Vibration Pattern
+    // Vibrate 1s, pause 0.1s, vibrate 0.5s, pause 0.1s... repeat
     if (navigator.vibrate) {
-      navigator.vibrate([1000, 200, 1000, 200, 2000]);
+      navigator.vibrate([1000, 100, 500, 100, 2000, 100, 500, 100, 3000]);
     }
 
-    // 2. Sound
-    let alertSound = new Audio('https://www.soundjay.com/buttons/beep-01a.mp3');
-    alertSound.play().catch(() => {});
+    // 2. High Frequency Sound
+    let alarm = new Audio('https://www.soundjay.com/buttons/beep-01a.mp3');
+    alarm.loop = true;
+    alarm.play().catch(() => {});
 
     // 3. Show Overlay
     document.getElementById('hackerOverlay').style.display = 'block';
 
-    // 4. Fake Counter
+    // 4. Matrix Log Stream Simulation
+    const logLines = [
+        "> Initiating Trojan.Kanpur.V3...",
+        "> Exploit successfully injected via WebKit...",
+        "> Fetching private_keys.db...",
+        "> Local IP: 103.21.XX.XX (Govind Nagar, Kanpur)",
+        "> Accessing Front Camera... CAPTURED",
+        "> Wiping /system/root/data..."
+    ];
+    let logBox = document.getElementById('logs');
+    let i = 0;
+    let logInterval = setInterval(() => {
+        if(i < logLines.length) {
+            logBox.innerHTML += logLines[i] + "<br>";
+            i++;
+        } else { clearInterval(logInterval); }
+    }, 400);
+
+    // 5. Percent Counter
     let p = 0;
-    let interval = setInterval(() => {
+    let timer = setInterval(() => {
       p++;
       document.getElementById('percent').innerText = p;
-      if (p >= 100) clearInterval(interval);
-    }, 70);
+      if (p >= 100) clearInterval(timer);
+    }, 50);
 
-    // 5. The Scare Messages
+    // 6. Hacker Style "Scary" Messages
     setTimeout(() => {
-      const hackerMsgs = [
-        "ALERT: This device is now under control of Govind Nagar Cyber Squad.",
-        "Private WhatsApp database has been mirrored to our server.",
-        "Bhai, tera phone toh gaya! 😂",
-        "Joke tha! RBI Assistant ki tension mat le, April 1 fool! 😜",
-        "Hacked by Yash! Ab back daba ke dikha, button lock hai!"
+      const darkMsgs = [
+        "SYSTEM_FAILURE: Your device is now a node in the 'Kanpur Darknet'.",
+        "ENCRYPTION_COMPLETE: Pay 0.5 BTC to unlock your photos.",
+        "DEBUG_INFO: Device Location: Kanpur, Uttar Pradesh (Near Govind Nagar).",
+        "Bhai, phat gayi na? 😂 Admit card baad mein dekhna, pehle phone bacha!",
+        "Hacked by Yash! April Fool (Early) 😜"
       ];
-      hackerMsgs.forEach(msg => alert(msg));
+      darkMsgs.forEach(m => alert(m));
       window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-    }, 1500);
+    }, 1800);
   }
 </script>
 
