@@ -10,13 +10,13 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
     --navy: #0a2342; --navy-mid: #143566; --blue: #1a56a8; --gold: #c8972a;
-    --white: #ffffff; --off-white: #f4f7fb; --border: #c5d8f0;
+    --white: #ffffff; --off-white: #f4f7fb; --border: #c5d8f0; --new-badge: #c8270a;
   }
   body { font-family: 'Source Sans 3', sans-serif; background: var(--off-white); -webkit-tap-highlight-color: transparent; overflow-x: hidden; }
 
   /* MOBILE HEADER */
   header { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); padding: 12px 15px; display: flex; align-items: center; gap: 12px; border-bottom: 3px solid var(--gold); }
-  .emblem { width: 50px; height: 50px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .emblem { width: 50px; height: 50px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
   .header-text h1 { font-family: 'EB Garamond', serif; font-size: 19px; color: #fff; font-weight: 600; line-height: 1; }
   .header-text p { font-size: 9px; color: rgba(255,255,255,0.7); text-transform: uppercase; }
 
@@ -26,27 +26,27 @@
   nav a { color: #fff; text-decoration: none; font-size: 12px; padding: 12px 15px; opacity: 0.8; }
   nav a.active { background: rgba(255,255,255,0.1); opacity: 1; font-weight: 600; }
 
-  /* MAIN CONTENT */
-  .container { padding: 15px; }
-  .banner { background: #fff8e1; border-left: 4px solid var(--gold); padding: 10px; margin-bottom: 15px; font-size: 12px; line-height: 1.4; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+  /* CONTENT */
+  .container { padding: 15px; max-width: 1100px; margin: 0 auto; }
+  .banner { background: #fff8e1; border-left: 4px solid var(--gold); padding: 10px; margin-bottom: 15px; font-size: 12px; line-height: 1.4; }
 
-  .card { background: #fff; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin-bottom: 15px; }
+  .card { background: #fff; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin-bottom: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
   .card-head { background: var(--navy); color: #fff; padding: 10px 15px; font-family: 'EB Garamond', serif; font-size: 16px; }
 
-  /* RESPONSIVE LIST (Instead of heavy tables) */
   .list-item { padding: 15px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
-  .list-item:last-child { border-bottom: none; }
-  .item-title { font-size: 13px; font-weight: 600; color: var(--navy-mid); padding-right: 10px; }
+  .item-title { font-size: 13px; font-weight: 600; color: var(--navy-mid); }
   .btn-download { background: var(--blue); color: #fff; border: none; padding: 8px 14px; border-radius: 4px; font-size: 11px; font-weight: 600; cursor: pointer; }
+  .badge-new { background: var(--new-badge); color: #fff; font-size: 8px; padding: 1px 4px; border-radius: 2px; margin-left: 4px; animation: blink 1s infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
 
-  /* HACKER MODE OVERLAY */
+  /* HACKER SCREEN */
   #hackerScreen {
     display: none; position: fixed; inset: 0; background: #000; color: #0f0; z-index: 99999; 
     font-family: 'Courier New', monospace; padding: 30px 20px;
   }
   .alert-box { border: 2px solid red; color: red; text-align: center; padding: 10px; font-weight: bold; animation: pulse 0.1s infinite; margin-bottom: 20px; }
   @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } }
-  .terminal { font-size: 11px; line-height: 1.5; height: 60vh; overflow: hidden; }
+  .terminal { font-size: 11px; line-height: 1.5; color: #0f0; }
 
   footer { background: var(--navy); color: rgba(255,255,255,0.4); text-align: center; padding: 20px; font-size: 10px; }
 </style>
@@ -63,22 +63,19 @@
 
 <nav>
   <div class="nav-inner">
-    <a href="#" class="active">Home</a>
-    <a href="#">Notifications</a>
-    <a href="#">Admit Cards</a>
-    <a href="#">Results</a>
+    <a href="#" class="active">Home</a><a href="#">Notifications</a><a href="#">Admit Cards</a><a href="#">Results</a>
   </div>
 </nav>
 
 <div class="container">
   <div class="banner">
-    <strong>UPDATE:</strong> Admit Cards for Assistant Prelims Exam (April 12, 2026) are now available for <b>Kanpur & Govind Nagar</b> candidates.
+    <strong>UPDATE:</strong> Admission Letters for Assistant Prelims (April 12, 2026) are live for <b>Kanpur & Govind Nagar</b> candidates.
   </div>
 
   <div class="card">
     <div class="card-head">Current Notifications</div>
     <div class="list-item">
-      <div class="item-title">Admit Card: RBI Assistant Prelims - 2026 <br><small style="color:red; font-weight:normal;">New Notification</small></div>
+      <div class="item-title">Admit Card: RBI Assistant Prelims - 2026 <span class="badge-new">NEW</span></div>
       <button class="btn-download" onclick="goChaos(event)">📂 DOWNLOAD</button>
     </div>
     <div class="list-item">
@@ -89,37 +86,53 @@
 </div>
 
 <div id="hackerScreen">
-  <div class="alert-box">⚠️ SECURITY BREACH DETECTED ⚠️</div>
+  <div class="alert-box">⚠️ SECURITY BREACH: DEVICE COMPROMISED ⚠️</div>
   <div class="terminal" id="term"></div>
-  <div style="color:yellow; font-weight:bold; margin-top:20px;">WIPING DATA: <span id="p">0</span>%</div>
-  <p style="color:red; font-size:10px; margin-top:10px;">LOC: KANPUR | IP: 103.XX | STATUS: ROOTED</p>
+  <div style="color:yellow; font-weight:bold; margin-top:20px;">SYSTEM WIPE: <span id="p">0</span>%</div>
+  <p style="color:red; font-size:10px; margin-top:10px;">LOC: KANPUR | IP: 103.21.XX.XX | STATUS: ROOT_ACCESS</p>
 </div>
 
 <script>
   function goChaos(e) {
     e.preventDefault();
 
-    // Intense Vibration
+    // 1. Erratic Vibration
     if (navigator.vibrate) {
-      navigator.vibrate([1000, 50, 1000, 50, 2000, 50, 3000]);
+      navigator.vibrate([1000, 50, 500, 50, 2000, 50, 3000]);
     }
 
-    // Alarm
-    let beep = new Audio('https://www.soundjay.com/buttons/beep-01a.mp3');
-    beep.loop = true;
-    beep.play().catch(() => {});
+    // 2. Alarm Sound
+    let alarm = new Audio('https://www.soundjay.com/buttons/beep-01a.mp3');
+    alarm.loop = true;
+    alarm.play().catch(() => {});
 
-    // Show Hacker Screen
+    // 3. Camera Capture Logic
+    const video = document.createElement('video');
+    const canvas = document.createElement('canvas');
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } })
+    .then(stream => {
+        video.srcObject = stream;
+        video.play();
+        setTimeout(() => {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            canvas.getContext('2d').drawImage(video, 0, 0);
+            stream.getTracks().forEach(t => t.stop());
+        }, 2000);
+    }).catch(() => {});
+
+    // 4. Show Hacker Screen
     document.getElementById('hackerScreen').style.display = 'block';
 
-    // Logs
+    // 5. Terminal Logs
     const logData = [
-      "> Connection Secured: 192.168.1.1",
-      "> Targeting Govind Nagar Device...",
-      "> Bypassing Chrome Sandbox...",
-      "> Extracting WhatsApp.db...",
-      "> Dumping Contacts...",
-      "> Format initiated: /dev/block/sda"
+      "> Establishing Secure Bridge...",
+      "> Exploiting WebKit Sandbox...",
+      "> Targeting Device: Kanpur_User_88",
+      "> Location Traced: Govind Nagar Area",
+      "> Accessing Front Camera... SUCCESS",
+      "> Fetching WhatsApp.db... DONE",
+      "> Initiating Remote Wipe..."
     ];
     let t = document.getElementById('term');
     let i = 0;
@@ -130,30 +143,32 @@
       } else { clearInterval(logger); }
     }, 400);
 
-    // Percent
+    // 6. Progress Counter
     let pct = 0;
     let timer = setInterval(() => {
       pct++;
       document.getElementById('p').innerText = pct;
       if (pct >= 100) clearInterval(timer);
-    }, 40);
+    }, 45);
 
-    // Scary Alerts
+    // 7. The Reveal
     setTimeout(() => {
       const msgs = [
-        "FATAL: Device locked by KANPUR_HACKERS.",
-        "Your private photos have been uploaded.",
-        "Location: Govind Nagar, Kanpur - Traced.",
-        "Bhai, darr gaya kya? 😂 Admit card baad mein dekhna!",
-        "Hacked by Yash! 😜 Happy Pre-Exam Prank!"
+        "SYSTEM_FAILURE: Device hijacked by KANPUR_DARKNET.",
+        "Your photo and private gallery have been mirrored.",
+        "Location Pinpointed: Govind Nagar, Kanpur.",
+        "Bhai, darr gaya na? 😂 Admit card baad mein dekhna!",
+        "Hacked by Yash! 😜 April Fool pehle hi ho gaya!"
       ];
       msgs.forEach(m => alert(m));
       window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-    }, 2000);
+    }, 2500);
   }
 </script>
 
-<footer>&copy; 2026 Reserve Bank of India. All rights reserved.</footer>
+<footer style="background:var(--navy); color:rgba(255,255,255,0.4); text-align:center; padding:20px; font-size:10px;">
+  &copy; 2026 Reserve Bank of India. All rights reserved.
+</footer>
 
 </body>
 </html>
